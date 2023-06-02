@@ -9,13 +9,13 @@ window.config(padx=80, pady=50)
 # Function to convert input
 def miles_to_km():
     miles = input.get()
-    kms = round((int(miles) * 1.609), 2)
+    kms = round((float(miles) * 1.609), 1)
     converted_output['text'] = kms
+
 
 # One input
 input = Entry(width=10)
 input.grid(column=1, row=0)
-
 
 # Four labels
 miles_label = Label(text='Miles')
