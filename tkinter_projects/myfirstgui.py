@@ -4,29 +4,34 @@ import random
 window = Tk()
 window.title("My First GUI Program")
 window.minsize(width=500, height=300)
+window.config(padx=50, pady=50)
+
+def button_got_clicked():
+    my_label['text'] = input.get()
+
+def boom_boom():
+    my_label['text'] = 'BOOM 💥'
 
 # Label
 my_label = Label(text='What\'s up!', font=("Arial", 24, "bold"))
 my_label.pack()
-
+my_label.grid(column=0, row=0)
 
 # Button
 
-
-# def button_got_clicked():
-#     button_options = ['Hello World!', 'You\'re cool!', 'I love sushi!', 'Pikmin are cool!']
-#
-#     my_label['text'] = random.choice(button_options)
-def button_got_clicked():
-    my_label['text'] = input.get()
-
-
 button = Button(text='Click here', command=button_got_clicked)
-button.pack()  # Elements need to have pack to show up on screen
+button.grid(column=1, row=1)
 
 # Entry
 input = Entry(width=20)
-input.pack()
 input.get()
+input.grid(column=3, row=2)
+
+new_button = Button(text='Don\'t click this!', command=boom_boom)
+new_button.grid(column=2, row=0)
+
+
+
+
 
 window.mainloop()
