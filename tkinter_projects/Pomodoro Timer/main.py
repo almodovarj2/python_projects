@@ -28,17 +28,8 @@ def start_timer():
         count_down(SHORT_BREAK_MIN * 60)
     else:
         timer_text.config(text='Focus', fg='#228B22')
-        count_down(WORK_MIN * 60)
+        count_down(WORK_MIN * 1)
 
-def num_of_sessions():
-    if reps == 2:
-        check_label['text'] = "✓" * 1
-    elif reps == 4:
-        check_label['text'] = "✓" * 2
-    elif reps == 6:
-        check_label['text'] = "✓" * 3
-    elif reps == 8:
-        check_label['text'] = "✓" * 4
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -49,7 +40,11 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
-
+        marks = ''
+        work_sessions = math.floor(reps/2)
+        for _ in range(work_sessions):
+            marks += '✓'
+        check_label.config(text=marks)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -72,7 +67,7 @@ check_label.grid(column=1, row=3)
 
 # buttons
 start_button = Button(text='Start', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'),
-                      command= lambda:[start_timer(),num_of_sessions()])
+                      command=start_timer)
 start_button.grid(column=0, row=2)
 
 reset_button = Button(text='Reset', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'))
