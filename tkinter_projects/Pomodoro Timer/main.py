@@ -16,7 +16,6 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 reps = 0
 
-
 def start_timer():
     global reps
     reps += 1
@@ -31,9 +30,15 @@ def start_timer():
         timer_text.config(text='Focus', fg='#228B22')
         count_down(WORK_MIN * 60)
 
-
-
-
+def num_of_sessions():
+    if reps == 2:
+        check_label['text'] = "✓" * 1
+    elif reps == 4:
+        check_label['text'] = "✓" * 2
+    elif reps == 6:
+        check_label['text'] = "✓" * 3
+    elif reps == 8:
+        check_label['text'] = "✓" * 4
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
@@ -44,6 +49,7 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -61,15 +67,15 @@ canvas.grid(column=1, row=1)
 timer_text = Label(text='Timer', bg=YELLOW, fg='#228B22', font=(FONT_NAME, 40, 'bold'))
 timer_text.grid(column=1, row=0)
 
-check_label = Label(text='✓', bg=YELLOW, fg="#228B22", font=('Arial', 20, "bold"))
+check_label = Label(text='', bg=YELLOW, fg="#228B22", font=('Arial', 20, "bold"))
 check_label.grid(column=1, row=3)
 
 # buttons
-start_button = Button(text='Start', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'), command=start_timer)
+start_button = Button(text='Start', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'),
+                      command= lambda:[start_timer(),num_of_sessions()])
 start_button.grid(column=0, row=2)
 
 reset_button = Button(text='Reset', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'))
 reset_button.grid(column=2, row=2)
-
 
 window.mainloop()
