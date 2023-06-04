@@ -20,16 +20,19 @@ reps = 0
 def start_timer():
     global reps
     reps += 1
-    if reps == 8:
-        timer_text['text'] = 'Long Break'
+    if reps % 8 == 0:
+        timer_text.config(text='Long Break', fg=RED)
         count_down(LONG_BREAK_MIN * 60)
 
     elif reps % 2 == 0:
-        timer_text['text'] = 'Short Break'
+        timer_text.config(text='Short Break', fg=PINK)
         count_down(SHORT_BREAK_MIN * 60)
     else:
-        timer_text['text'] = 'Focus'
+        timer_text.config(text='Focus', fg='#228B22')
         count_down(WORK_MIN * 60)
+
+
+
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -39,7 +42,8 @@ def count_down(count):
     canvas.itemconfig(time_text, text=f"{count_min}:{count_sec:02}")
     if count > 0:
         window.after(1000, count_down, count - 1)
-
+    else:
+        start_timer()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -61,11 +65,11 @@ check_label = Label(text='✓', bg=YELLOW, fg="#228B22", font=('Arial', 20, "bol
 check_label.grid(column=1, row=3)
 
 # buttons
-start_button = Button(text='Start', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'),
-                      command=start_timer)
+start_button = Button(text='Start', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'), command=start_timer)
 start_button.grid(column=0, row=2)
 
 reset_button = Button(text='Reset', highlightbackground=YELLOW, width=2, font=('Arial', 14, 'bold'))
 reset_button.grid(column=2, row=2)
+
 
 window.mainloop()
