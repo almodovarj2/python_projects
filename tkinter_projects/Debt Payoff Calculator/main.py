@@ -25,7 +25,7 @@ title_text.grid(row=0, column=1)
 # Balance owed
 balance_text = Label(text='Balance Owed', fg='black', bg=BG_COLOR, font=(FONT_NAME, 20))
 balance_input = Entry(width=10, bg='white', fg='black', highlightthickness=1)
-balance_text.grid(row=1, column=1,pady=(20, 0))
+balance_text.grid(row=1, column=1, pady=(20, 0))
 balance_input.grid(row=2, column=1)
 
 # Estimated Interest Rate
