@@ -25,9 +25,15 @@ canvas.grid(column=1, row=1)
 title_text = Label(text= 'Debt Repayment Calculator', fg='#83764F', bg= BG_COLOR, font=(FONT_NAME, 30, 'bold'))
 title_text.grid(row=0, column=1)
 # Balance owed
-balance_text = Label(text='Balance Owed',)
+balance_text = Label(text='Balance Owed', fg='black', bg=BG_COLOR, font=(FONT_NAME, 20))
 balance_input = Entry(width=10)
+balance_text.grid(row=1, column=1)
+balance_input.grid(row=2, column=1)
 # Estimated Interest Rate
+interest_text = Label(text='Estimated Interest', fg='black', bg=BG_COLOR, font=(FONT_NAME, 20))
+interest_input = Entry(width=10)
+interest_text.grid(row=3, column=1)
+interest_input.grid(row=4, column=1)
 # Monthly payment or Desired months to payoff
 
 # BUTTONS
