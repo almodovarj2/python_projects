@@ -34,12 +34,21 @@ interest_input = Entry(width=10, bg='white', fg='black',highlightthickness=1)
 interest_text.grid(row=3, column=1, pady=(20, 0))
 interest_input.grid(row=4, column=1)
 # Monthly payment or Desired months to payoff
+only_one = Label(text='Input only one of the following:', font=(FONT_NAME, 16, 'bold'), fg='black', bg=BG_COLOR)
+only_one.grid(row=5, column=1)
 
 # BUTTONS
+# Radio buttons
+payment_amount = Radiobutton(text='Expected monthly payment', font=(FONT_NAME, 16, 'bold'), fg='black', bg=BG_COLOR)
+payment_amount.grid(row=6, column=1, padx=(0, 150), pady=(20, 0))
+
+months_amount = Radiobutton(text='Desired months to pay off', font=(FONT_NAME, 16, 'bold'), fg='black', bg=BG_COLOR)
+months_amount.grid(row=6, column=1, padx=(150, 0), pady=(20, 0))
+
 # Calculate button
 calculate_button = Button(text='Calculate', bg=BG_COLOR, highlightbackground=BG_COLOR, font=(FONT_NAME, 20, 'bold'))
-calculate_button.grid(row=5, column=1, padx=(0, 150), pady=(20, 0))
+calculate_button.grid(row=7, column=1, padx=(0, 150), pady=(20, 0))
 # Start over button that only appears after you click the calculate button the first time
 start_over = Button(text='Start Over', bg=BG_COLOR, highlightbackground=BG_COLOR, font=(FONT_NAME, 20, 'bold'))
-start_over.grid(row=5, column=1, padx=(150, 0), pady=(20, 0))
+start_over.grid(row=7, column=1, padx=(150, 0), pady=(20, 0))
 window.mainloop()
